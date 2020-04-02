@@ -1,3 +1,5 @@
 # parsing_hh
-Parsing day job vacancies for a site.
-This is training parsing.
+
+Parsing day job vacancies for a [site](https://hh.ru/).
+
+Practice app.
