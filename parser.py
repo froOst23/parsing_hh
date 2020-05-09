@@ -17,15 +17,16 @@ def get_content(html):
     soup = BeautifulSoup(html, 'html.parser')
     items = soup.find_all('a', class_='bloko-link bloko-link_list HH-LinkModifier')
     # Создаем словарь, в котором будем хранить наш результат запроса
-    vacancy = []
-    for item in items:
-        vacancy.append({
-            'Vacancy': item.find('span', class_='vacancy-of-the-day__title').get_text(),
-            'Wage': item.find('span', class_='vacancy-of-the-day__salary').get_text().replace("\xa0", " ")
-            # Убираем неразрывный пробел, представленный в виде "\xa0"
-        })
-    print(vacancy)
-    print('Total vacancies for today: ' + str(len(vacancy)))
+    vacancy = {}
+    for i in items:
+        # Убираем неразрывный пробел, представленный в виде "\xa0"
+        vacancy[i.find('span', class_='vacancy-of-the-day__title').get_text()] =\
+            i.find('span', class_='vacancy-of-the-day__salary').get_text().replace("\xa0", " ")
+    count = 0
+    for key, value in vacancy.items():
+        count += 1
+        print(str(count) + " - " + key + " : " + value)
+    print('\nВсего вакансий дня : ' + str(len(vacancy)))
 
 
 def parse():
