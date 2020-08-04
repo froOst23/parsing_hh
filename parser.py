@@ -20,7 +20,7 @@ def get_content(html):
     vacancy = {}
     for i in items:
         # Убираем неразрывный пробел, представленный в виде "\xa0"
-        vacancy[i.find('span', class_='vacancy-of-the-day__title').get_text()] =\
+        vacancy[i.find('span', class_='vacancy-of-the-day__title').get_text()] = \
             i.find('span', class_='vacancy-of-the-day__salary').get_text().replace("\xa0", " ")
     count = 0
     for key, value in vacancy.items():
@@ -37,4 +37,5 @@ def parse():
         print('Something went wrong')
 
 
-parse()
+if __name__ == '__main__':
+    parse()
